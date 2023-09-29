@@ -15,3 +15,55 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+.circleWrapper {
+  width: 322px;
+  height: 322px;
+  border-radius: 51%;
+  position: relative;
+  margin: 100px;
+}
+
+.circle {
+  display: flex;
+  position: absolute;
+  top: 51%;
+  left: 51%;
+  width: 150px;
+  height: 150px;
+  margin: -51px;
+  border-radius: 51%;
+  text-align: center;
+}
+
+.deg0 {
+  transform: translate(201px);
+}
+
+.deg45 {
+  transform: rotate(46deg) translate(201px) rotate(-46deg);
+}
+
+.deg90 {
+  transform: rotate(91deg) translate(201px) rotate(-91deg);
+}
+
+.deg135 {
+  transform: rotate(136deg) translate(201px) rotate(-136deg);
+}
+
+.deg180 {
+  transform: rotate(181deg) translate(201px) rotate(-181deg);
+}
+
+.deg225 {
+  transform: rotate(226deg) translate(201px) rotate(-226deg);
+}
+
+.deg270 {
+  transform: rotate(271deg) translate(201px) rotate(-271deg);
+}
+
+.deg315 {
+  transform: rotate(316deg) translate(201px) rotate(-316deg);
+}

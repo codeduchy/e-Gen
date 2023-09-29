@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.24.2",
+    "axios": "^1.5.1",
     "next": "latest",
+    "openai": "^4.10.0",
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.11.0"
