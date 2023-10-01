@@ -8,7 +8,7 @@ import Link from "next/link";
 export const RoundDashboard = () => {
   return (
     <div
-      className={`relative circleWrapper transition-all lg:scale-[1.11] -translate-x-8`}
+      className={`relative circleWrapper transition-all lg:scale-[1.3] -translate-x-8`}
     >
       <h1 className="absolute top-[50%] text-4xl left-[18%] text-slate-500/60 font-medium text-center">
         Explore the <span className="text-3xl">power of AI</span>

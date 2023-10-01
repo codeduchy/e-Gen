@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <div className="h-screen w-full overflow-auto flex justify-center md:pt-16">
-      <div className="mt-5 md:hidden min-w-[90%] overflow-auto">
+    <div className="flex justify-center md:pt-16 lg:pt-24">
+      <div className="mt-5 md:hidden min-w-[90%] min-h-[36rem]">
         <NavMenu theme="light" />
       </div>
       <div className="hidden md:block">

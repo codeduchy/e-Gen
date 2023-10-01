@@ -6,7 +6,7 @@ const Landing = () => {
   const { userId } = auth();
 
   return (
-    <main className="bg-slate-900 h-screen flex justify-center items-center text-white flex-col space-y-2 ">
+    <main className="bg-gradient-to-b from-slate-900 to-cyan-950 h-screen flex justify-center items-center text-white flex-col space-y-2 ">
       <h1 className="font-bold text-3xl">Landing</h1>
       <div className="space-x-3 text-lg">
         <Link href={userId ? "/dashboard " : "/sign-in"}>

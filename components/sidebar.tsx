@@ -9,15 +9,15 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`bg-slate-900 md:h-screen flex flex-col ${
+      className={`bg-gradient-to-b from-slate-900 to-cyan-950 md:h-screen relative flex flex-col ${
         isOpen ? "h-screen" : "h-24"
-      } overflow-hidden transition-all relative`}
+      } overflow-hidden transition-all`}
     >
       <div
         className="absolute h-full w-full md:hidden"
         onClick={() => setIsOpen(!isOpen)}
       ></div>
-      <div className={`w-full flex items-center justify-center`}>
+      <div className={` w-full flex items-center justify-center`}>
         <Image
           src="/logo.png"
           width={50}

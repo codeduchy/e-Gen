@@ -16,6 +16,15 @@
   }
 }
 
+@layer components {
+  .formPrompt {
+    @apply col-span-12 lg:col-span-9 bg-transparent border-none outline-none h-12 rounded-lg text-base xl:text-xl font-semibold text-slate-900 resize-none tracking-tighter px-2;
+  }
+  .form {
+    @apply grid grid-cols-12 gap-2;
+  }
+}
+
 .circleWrapper {
   width: 322px;
   height: 322px;
