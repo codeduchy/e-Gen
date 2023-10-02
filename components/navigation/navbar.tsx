@@ -9,7 +9,6 @@ type NavProps = {
 
 const Navbar = ({ theme, ...attributes }: NavProps) => {
   const path = usePathname();
-  console.log(path);
 
   return (
     <div {...attributes}>
