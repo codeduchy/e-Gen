@@ -2,8 +2,13 @@
 import { useState } from "react";
 import Navbar from "./navbar";
 import Image from "next/image";
+import FreeCounter from "../free-counter";
 
-const MobileSidebar = () => {
+const MobileSidebar = ({
+  apiLimitCount,
+}: {
+  apiLimitCount: number | undefined;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,8 +27,13 @@ const MobileSidebar = () => {
           className="animate-pulse"
         />
       </div>
-      <div className="px-5 mt-5">
+      <div className="p-5 mt-5 h-full pb-[100px] flex flex-col justify-between">
         <Navbar theme="dark" />
+
+        <FreeCounter
+          apiLimitCount={apiLimitCount}
+          className="bg-slate-700/60 rounded-lg text-white w-full"
+        />
       </div>
     </div>
   );

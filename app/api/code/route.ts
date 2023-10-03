@@ -1,4 +1,5 @@
 import { codeSchema } from "@/app/(dashboard)/(routes)/code/constants";
+import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
@@ -35,12 +36,20 @@ export async function POST(req: Request) {
       return new NextResponse("Messages are required", { status: 400 });
     }
 
-    const stream = await openai.chat.completions.create({
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial) {
+      return new NextResponse("Free trial has expired", { status: 403 });
+    }
+
+    const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [initMessage, ...messages],
     });
 
-    return NextResponse.json(stream.choices[0].message);
+    await increaseApiLimit();
+
+    return NextResponse.json(response.choices[0].message);
   } catch (error) {
     console.log("[CODE API ERROR]: ", error);
     return new NextResponse("Internal error", { status: 500 });

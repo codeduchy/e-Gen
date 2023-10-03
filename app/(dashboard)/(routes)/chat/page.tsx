@@ -16,6 +16,7 @@ import { useState } from "react";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Progress from "@/components/progress";
 
 const ChatPage = () => {
   const router = useRouter();

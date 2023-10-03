@@ -25,7 +25,9 @@ const Button = ({
             : "bg-gradient-to-r from-emerald-600 to-cyan-500 text-white"
         } transition-all py-2 px-4 ${
           rounded ? "rounded-lg" : "rounded-none"
-        } font-medium ${hover ? "hover:scale-[1.02]" : ""} w-full text-lg`}
+        } font-medium ${
+          hover ? "hover:scale-[1.02]" : ""
+        } w-full text-lg flex items-center justify-center`}
         {...rest}
       >
         {children}

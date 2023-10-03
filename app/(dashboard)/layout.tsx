@@ -1,12 +1,15 @@
 import MobileSidebar from "@/components/navigation/mobile-sidebar";
 import Sidebar from "@/components/navigation/sidebar";
+import { getApiLimitCount } from "@/lib/api-limit";
 import { UserButton } from "@clerk/nextjs";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const layout = async ({ children }: { children: React.ReactNode }) => {
+  const apiLimitCount = await getApiLimitCount();
+
   return (
     <div className="relative h-screen grid grid-rows-[auto_1fr] md:grid-rows-none md:grid-cols-[auto_1fr] overflow-hidden">
-      <Sidebar />
-      <MobileSidebar />
+      <Sidebar apiLimitCount={apiLimitCount} />
+      <MobileSidebar apiLimitCount={apiLimitCount} />
       <div className="absolute top-5 right-5 scale-[1.3]">
         <UserButton afterSignOutUrl="/" />
       </div>

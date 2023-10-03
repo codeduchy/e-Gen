@@ -1,7 +1,8 @@
+import FreeCounter from "../free-counter";
 import Navbar from "./navbar";
 import Image from "next/image";
 
-const Sidebar = () => {
+const Sidebar = ({ apiLimitCount }: { apiLimitCount?: number }) => {
   return (
     <div className=" bg-gradient-to-b from-slate-900 to-cyan-950 w-[310px] text-white hidden md:block">
       <div className="h-20 flex items-center justify-center">
@@ -13,8 +14,13 @@ const Sidebar = () => {
           className="animate-pulse"
         />
       </div>
-      <div className="px-3 mt-4">
+      <div className="h-full pb-[92px] flex flex-col justify-between p-3">
         <Navbar theme="dark" />
+
+        <FreeCounter
+          apiLimitCount={apiLimitCount}
+          className="bg-slate-700/60 rounded-lg w-full"
+        />
       </div>
     </div>
   );
