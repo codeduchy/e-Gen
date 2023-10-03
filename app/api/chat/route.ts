@@ -13,11 +13,11 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { messages } = body;
 
-    if (!chatSchema.safeParse(messages).success) {
-      return new NextResponse("Messages format error", { status: 400 });
-    }
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
+    }
+    if (!chatSchema.safeParse(messages).success) {
+      return new NextResponse("Messages format error", { status: 400 });
     }
     if (!openai.apiKey) {
       return new NextResponse("OpenAI API key not configured", {

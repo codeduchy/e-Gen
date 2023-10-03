@@ -13,7 +13,7 @@ const Sidebar = () => {
           className="animate-pulse"
         />
       </div>
-      <div className="px-2 mt-4">
+      <div className="px-3 mt-4">
         <Navbar theme="dark" />
       </div>
     </div>

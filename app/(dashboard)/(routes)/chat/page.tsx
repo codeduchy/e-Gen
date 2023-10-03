@@ -1,17 +1,17 @@
 "use client";
-import BotAvatar from "@/components/bot-avatar";
-import Empty from "@/components/empty";
-import Heading from "@/components/heading";
-import UserAvatar from "@/components/user-avatar";
+import BotAvatar from "@/components/page/bot-avatar";
+import Empty from "@/components/page/empty";
+import Heading from "@/components/page/heading";
+import UserAvatar from "@/components/page/user-avatar";
 import { useForm } from "react-hook-form";
 import { BsChatDots } from "react-icons/bs";
 import { chatSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Input from "@/components/input";
-import Form from "@/components/form";
+import Input from "@/components/forms/input";
+import Form from "@/components/forms/form";
 import Button from "@/components/button";
-import Loader from "@/components/loader";
+import Loader from "@/components/page/loader";
 import { useState } from "react";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import axios from "axios";
@@ -73,6 +73,7 @@ const ChatPage = () => {
         <Button
           className="lg:col-span-3 col-span-12"
           color="bg-gradient-to-r from-violet-500 to-cyan-500 text-white"
+          disabled={isSubmitting}
         >
           Submit
         </Button>

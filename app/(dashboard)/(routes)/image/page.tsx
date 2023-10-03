@@ -1,9 +1,9 @@
 "use client";
 import Button from "@/components/button";
-import Form from "@/components/form";
-import Heading from "@/components/heading";
-import Input from "@/components/input";
-import Select from "@/components/select";
+import Form from "@/components/forms/form";
+import Heading from "@/components/page/heading";
+import Input from "@/components/forms/input";
+import Select from "@/components/forms/select";
 import { BiImage } from "react-icons/bi";
 import { amountOptions, imageSchema, resolutionOptions } from "./constants";
 import { useForm } from "react-hook-form";
@@ -12,10 +12,10 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
-import Loader from "@/components/loader";
-import Empty from "@/components/empty";
+import Loader from "@/components/page/loader";
+import Empty from "@/components/page/empty";
 import Image from "next/image";
-import ImageCard from "@/components/image-card";
+import ImageCard from "@/components/page/image-card";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -88,6 +88,7 @@ const ImagePage = () => {
         <Button
           className="col-span-full"
           color="bg-gradient-to-r from-pink-700 to-cyan-500 text-white"
+          disabled={isSubmitting}
         >
           Submit
         </Button>

@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Empty = ({ label }: { label: string }) => {
   return (
-    <div className="flex flex-col items-center p-16">
-      <div className=" h-52 md:h-64 xl:h-72 transition-all 2xl:h-80">
+    <div className="flex flex-col items-center mt-10">
+      <div className="h-52 md:h-60 xl:h-64 transition-all 2xl:h-80">
         <Image
           src="/empty.svg"
           alt="empty"

@@ -1,5 +1,4 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import { useState } from "react";
@@ -8,16 +7,16 @@ import { codeSchema } from "./constants";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BiCode } from "react-icons/bi";
-import Heading from "@/components/heading";
-import Form from "@/components/form";
-import Input from "@/components/input";
+import Heading from "@/components/page/heading";
+import Form from "@/components/forms/form";
+import Input from "@/components/forms/input";
 import Button from "@/components/button";
-import Loader from "@/components/loader";
-import Empty from "@/components/empty";
+import Loader from "@/components/page/loader";
+import Empty from "@/components/page/empty";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
-import UserAvatar from "@/components/user-avatar";
-import BotAvatar from "@/components/bot-avatar";
+import UserAvatar from "@/components/page/user-avatar";
+import BotAvatar from "@/components/page/bot-avatar";
 
 const CodePage = () => {
   const router = useRouter();
@@ -44,7 +43,6 @@ const CodePage = () => {
       const response = await axios.post("/api/code", {
         messages: newMessages,
       });
-      console.log(response);
 
       setMessages((value) => [...value, userMessage, response.data]);
 
@@ -74,6 +72,7 @@ const CodePage = () => {
         <Button
           className="col-span-full lg:col-span-3"
           color="bg-gradient-to-r from-green-700 to-cyan-500 text-white"
+          disabled={isSubmitting}
         >
           Submit
         </Button>
