@@ -1,10 +1,10 @@
 "use client";
 
-import { ProModal } from "@/context/pro-modal-provider";
+import { ProModalContext } from "@/context/pro-modal-provider";
 import { useContext } from "react";
 
-const Modal = () => {
-  const { isOpen, setIsOpen } = useContext(ProModal);
+const ProModal = () => {
+  const { isOpen, setIsOpen } = useContext(ProModalContext);
 
   return (
     <div
@@ -14,7 +14,9 @@ const Modal = () => {
           : "hidden"
       }
       onClick={() => setIsOpen(false)}
-    ></div>
+    >
+      <div className="bg-white w-72 h-72"></div>
+    </div>
   );
 };
-export default Modal;
+export default ProModal;

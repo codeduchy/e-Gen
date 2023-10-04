@@ -12,7 +12,7 @@ type ProModalProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export const ProModal = createContext<ProModalProps>({
+export const ProModalContext = createContext<ProModalProps>({
   isOpen: false,
   setIsOpen: () => {},
 });
@@ -20,9 +20,9 @@ const ProModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <ProModal.Provider value={{ isOpen, setIsOpen }}>
+    <ProModalContext.Provider value={{ isOpen, setIsOpen }}>
       {children}
-    </ProModal.Provider>
+    </ProModalContext.Provider>
   );
 };
 export default ProModalProvider;

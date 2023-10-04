@@ -4,7 +4,7 @@ import Progress from "./progress";
 import Button from "./button";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
-import { ProModal } from "@/context/pro-modal-provider";
+import { ProModalContext } from "@/context/pro-modal-provider";
 
 const FreeCounter = ({
   apiLimitCount = 0,
@@ -14,7 +14,7 @@ const FreeCounter = ({
   className?: string;
 }) => {
   const [mounted, setMounted] = useState(false);
-  const { setIsOpen } = useContext(ProModal);
+  const { setIsOpen } = useContext(ProModalContext);
 
   useEffect(() => {
     setMounted(true);
