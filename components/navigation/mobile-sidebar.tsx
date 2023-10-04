@@ -6,8 +6,10 @@ import FreeCounter from "../free-counter";
 
 const MobileSidebar = ({
   apiLimitCount,
+  isPro,
 }: {
   apiLimitCount: number | undefined;
+  isPro: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,6 +34,7 @@ const MobileSidebar = ({
 
         <FreeCounter
           apiLimitCount={apiLimitCount}
+          isPro={isPro}
           className="bg-slate-700/60 rounded-lg text-white w-full"
         />
       </div>

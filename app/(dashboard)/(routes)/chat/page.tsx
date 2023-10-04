@@ -18,6 +18,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Progress from "@/components/progress";
 import { ProModalContext } from "@/context/pro-modal-provider";
+import toast from "react-hot-toast";
 
 const ChatPage = () => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const ChatPage = () => {
 
       reset();
     } catch (error: any) {
-      console.log(error);
+      toast.error("Something went wrong");
       if (error?.response?.status === 403) {
         setIsOpen(true);
       }

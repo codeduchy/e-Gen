@@ -1,15 +1,31 @@
 "use client";
 
 import { ProModalContext } from "@/context/pro-modal-provider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ImCross } from "react-icons/im";
-import Navbar from "./navigation/navbar";
 import Button from "./button";
 import { tools } from "@/utils/tools";
 import { BsCheckLg } from "react-icons/bs";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ProModal = () => {
+  const [loading, setLoading] = useState(false);
   const { isOpen, setIsOpen } = useContext(ProModalContext);
+
+  const onSubscribe = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/stripe");
+      console.log(response);
+
+      window.location.href = response.data.url;
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div
@@ -44,6 +60,8 @@ const ProModal = () => {
         <Button
           className="w-[90%]"
           color="bg-gradient-to-r from-violet-700 to-red-500 text-white"
+          disabled={loading}
+          onClick={onSubscribe}
         >
           Upgrade
         </Button>

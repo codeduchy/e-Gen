@@ -17,6 +17,7 @@ import Empty from "@/components/page/empty";
 import Image from "next/image";
 import ImageCard from "@/components/page/image-card";
 import { ProModalContext } from "@/context/pro-modal-provider";
+import toast from "react-hot-toast";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -43,7 +44,7 @@ const ImagePage = () => {
 
       reset();
     } catch (error: any) {
-      console.log(error);
+      toast.error("Something went wrong");
       if (error?.response?.status === 403) {
         setIsOpen(true);
       }

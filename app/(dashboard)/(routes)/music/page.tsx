@@ -14,6 +14,7 @@ import Button from "@/components/button";
 import Empty from "@/components/page/empty";
 import axios from "axios";
 import { ProModalContext } from "@/context/pro-modal-provider";
+import toast from "react-hot-toast";
 
 const MusicPage = () => {
   const router = useRouter();
@@ -39,7 +40,7 @@ const MusicPage = () => {
 
       setMusic(response.data.audio);
     } catch (error: any) {
-      console.log(error);
+      toast.error("Something went wrong");
       if (error?.response?.status === 403) {
         setIsOpen(true);
       }

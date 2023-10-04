@@ -18,6 +18,7 @@ import ReactMarkdown from "react-markdown";
 import UserAvatar from "@/components/page/user-avatar";
 import BotAvatar from "@/components/page/bot-avatar";
 import { ProModalContext } from "@/context/pro-modal-provider";
+import toast from "react-hot-toast";
 
 const CodePage = () => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const CodePage = () => {
 
       reset();
     } catch (error: any) {
-      console.log(error);
+      toast.error("Something went wrong");
       if (error?.response?.status === 403) {
         setIsOpen(true);
       }

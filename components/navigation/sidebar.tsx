@@ -2,7 +2,13 @@ import FreeCounter from "../free-counter";
 import Navbar from "./navbar";
 import Image from "next/image";
 
-const Sidebar = ({ apiLimitCount }: { apiLimitCount?: number }) => {
+const Sidebar = ({
+  apiLimitCount,
+  isPro = false,
+}: {
+  apiLimitCount?: number;
+  isPro: boolean;
+}) => {
   return (
     <div className=" bg-gradient-to-b from-slate-900 to-cyan-950 w-[310px] text-white hidden md:block">
       <div className="h-20 flex items-center justify-center">
@@ -18,6 +24,7 @@ const Sidebar = ({ apiLimitCount }: { apiLimitCount?: number }) => {
         <Navbar theme="dark" />
 
         <FreeCounter
+          isPro={isPro}
           apiLimitCount={apiLimitCount}
           className="bg-slate-700/60 rounded-lg w-full"
         />

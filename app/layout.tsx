@@ -5,6 +5,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ProModalProvider from "@/context/pro-modal-provider";
 import { useContext } from "react";
 import ProModal from "@/components/pro-modal";
+import CrispProvider from "@/components/crisp-provider";
+import { ToasterProvider } from "@/components/toaster-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +25,7 @@ export default function RootLayout({
       <ProModalProvider>
         <html lang="en">
           <body className="relative">
+            <ToasterProvider />
             <ProModal />
             {children}
           </body>

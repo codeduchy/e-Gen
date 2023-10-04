@@ -14,6 +14,7 @@ import Loader from "@/components/page/loader";
 import Empty from "@/components/page/empty";
 import axios from "axios";
 import { ProModalContext } from "@/context/pro-modal-provider";
+import toast from "react-hot-toast";
 
 const VideoPage = () => {
   const router = useRouter();
@@ -39,7 +40,7 @@ const VideoPage = () => {
       setVideo(response.data[0]);
       reset();
     } catch (error: any) {
-      console.log(error);
+      toast.error("Something went wrong");
       if (error?.response?.status === 403) {
         setIsOpen(true);
       }
