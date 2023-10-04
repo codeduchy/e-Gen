@@ -15,13 +15,13 @@ const Progress = ({
 }: ProgressProps) => {
   return (
     <div className={className}>
-      <div className={`${bgColor ? bgColor : "bg-white"} rounded-md h-full`}>
+      <div className={`${bgColor ? bgColor : "bg-white"} rounded-xl h-full`}>
         <div
           className={`h-full ${width} ${
             color ? color : "bg-blue-500 "
-          } rounded-md flex items-center justify-center font-semibold text-xs text-black`}
+          } rounded-xl flex items-center justify-center font-semibold text-xs text-black`}
         >
-          {value ? "%" : ""}
+          {/* {value ? value : ""} */}
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { codeSchema } from "./constants";
 import { z } from "zod";
@@ -17,10 +17,13 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import UserAvatar from "@/components/page/user-avatar";
 import BotAvatar from "@/components/page/bot-avatar";
+import { ProModalContext } from "@/context/pro-modal-provider";
 
 const CodePage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
+
+  const { setIsOpen } = useContext(ProModalContext);
 
   const {
     reset,
@@ -47,8 +50,11 @@ const CodePage = () => {
       setMessages((value) => [...value, userMessage, response.data]);
 
       reset();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error?.response?.status === 403) {
+        setIsOpen(true);
+      }
     } finally {
       router.refresh();
     }

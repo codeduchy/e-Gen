@@ -12,15 +12,18 @@ import Input from "@/components/forms/input";
 import Form from "@/components/forms/form";
 import Button from "@/components/button";
 import Loader from "@/components/page/loader";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Progress from "@/components/progress";
+import { ProModalContext } from "@/context/pro-modal-provider";
 
 const ChatPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
+
+  const { setIsOpen } = useContext(ProModalContext);
 
   const {
     handleSubmit,
@@ -30,8 +33,6 @@ const ChatPage = () => {
   } = useForm<z.infer<typeof chatSchema>>({
     resolver: zodResolver(chatSchema),
   });
-
-  console.log(errors);
 
   const onSubmit = async (values: z.infer<typeof chatSchema>) => {
     try {
@@ -49,8 +50,11 @@ const ChatPage = () => {
       setMessages((value) => [...value, userMessage, response.data]);
 
       reset();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error?.response?.status === 403) {
+        setIsOpen(true);
+      }
     } finally {
       router.refresh();
     }

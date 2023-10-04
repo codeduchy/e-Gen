@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { videoSchema } from "./constants";
@@ -13,6 +13,7 @@ import Button from "@/components/button";
 import Loader from "@/components/page/loader";
 import Empty from "@/components/page/empty";
 import axios from "axios";
+import { ProModalContext } from "@/context/pro-modal-provider";
 
 const VideoPage = () => {
   const router = useRouter();
@@ -27,6 +28,8 @@ const VideoPage = () => {
     resolver: zodResolver(videoSchema),
   });
 
+  const { setIsOpen } = useContext(ProModalContext);
+
   const onSubmit = async (value: z.infer<typeof videoSchema>) => {
     try {
       setVideo(undefined);
@@ -35,8 +38,11 @@ const VideoPage = () => {
 
       setVideo(response.data[0]);
       reset();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error?.response?.status === 403) {
+        setIsOpen(true);
+      }
     } finally {
       router.refresh();
     }

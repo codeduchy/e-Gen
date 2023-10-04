@@ -26,7 +26,7 @@ const Button = ({
         } transition-all py-2 px-4 ${
           rounded ? "rounded-lg" : "rounded-none"
         } font-medium ${
-          hover ? "hover:scale-[1.02]" : ""
+          hover ? "hover:scale-[1.01]" : ""
         } w-full text-lg flex items-center justify-center`}
         {...rest}
       >

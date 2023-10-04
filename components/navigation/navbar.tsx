@@ -2,8 +2,9 @@
 import { routes } from "@/utils/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-type NavProps = {
+type NavProps = HTMLAttributes<HTMLDivElement> & {
   theme: string;
 };
 
@@ -20,7 +21,7 @@ const Navbar = ({ theme, ...attributes }: NavProps) => {
             className={`${
               theme === "dark"
                 ? "text-white  hover:bg-white/10 mt-2 rounded-lg hover:pl-4"
-                : "text-black"
+                : "text-black border border-slate-200 rounded-lg mt-1 hover:pl-4 text-lg scale-"
             } 
             ${
               path == route.href

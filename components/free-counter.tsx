@@ -3,7 +3,7 @@ import { MAX_FREE_COUNTS } from "@/utils/constants";
 import Progress from "./progress";
 import Button from "./button";
 import { BsLightningChargeFill } from "react-icons/bs";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ProModalContext } from "@/context/pro-modal-provider";
 
 const FreeCounter = ({
@@ -13,16 +13,7 @@ const FreeCounter = ({
   apiLimitCount: number | undefined;
   className?: string;
 }) => {
-  const [mounted, setMounted] = useState(false);
   const { setIsOpen } = useContext(ProModalContext);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return true;
-  }
 
   let width = "w-0";
   if (apiLimitCount === 1) {

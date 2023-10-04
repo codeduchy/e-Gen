@@ -2,7 +2,7 @@
 import Loader from "@/components/page/loader";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { musicSchema } from "./constants";
 import { z } from "zod";
@@ -13,6 +13,7 @@ import Input from "@/components/forms/input";
 import Button from "@/components/button";
 import Empty from "@/components/page/empty";
 import axios from "axios";
+import { ProModalContext } from "@/context/pro-modal-provider";
 
 const MusicPage = () => {
   const router = useRouter();
@@ -27,17 +28,21 @@ const MusicPage = () => {
     resolver: zodResolver(musicSchema),
   });
 
+  const { setIsOpen } = useContext(ProModalContext);
+
   const onSubmit = async (value: z.infer<typeof musicSchema>) => {
     try {
       setMusic(undefined);
-      console.log(value);
 
       const response = await axios.post("/api/music", value);
       console.log(response);
 
       setMusic(response.data.audio);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error?.response?.status === 403) {
+        setIsOpen(true);
+      }
     } finally {
       router.refresh();
     }

@@ -10,12 +10,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import Loader from "@/components/page/loader";
 import Empty from "@/components/page/empty";
 import Image from "next/image";
 import ImageCard from "@/components/page/image-card";
+import { ProModalContext } from "@/context/pro-modal-provider";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -29,6 +30,8 @@ const ImagePage = () => {
     resolver: zodResolver(imageSchema),
   });
 
+  const { setIsOpen } = useContext(ProModalContext);
+
   const onSubmit = async (values: z.infer<typeof imageSchema>) => {
     try {
       setImages([]);
@@ -39,8 +42,11 @@ const ImagePage = () => {
       setImages(urls);
 
       reset();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error?.response?.status === 403) {
+        setIsOpen(true);
+      }
     } finally {
       router.refresh();
     }

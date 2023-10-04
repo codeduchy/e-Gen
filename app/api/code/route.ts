@@ -1,4 +1,3 @@
-import { codeSchema } from "@/app/(dashboard)/(routes)/code/constants";
 import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
@@ -21,9 +20,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { messages } = body;
 
-    if (!codeSchema.safeParse(messages).success) {
-      return new NextResponse("Messages format error", { status: 400 });
-    }
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
