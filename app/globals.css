@@ -16,25 +16,6 @@
   }
 }
 
-<<<<<<< HEAD
-@layer components {
-  .formPrompt {
-    @apply col-span-12 lg:col-span-9 bg-transparent border-none outline-none h-12 rounded-lg text-base xl:text-xl font-semibold text-slate-900 resize-none tracking-tighter px-2;
-  }
-  .form {
-    @apply grid grid-cols-12 gap-2;
-  }
-}
-
-.circleWrapper {
-  width: 322px;
-  height: 322px;
-  border-radius: 51%;
-  position: relative;
-  margin: 100px;
-}
-
-=======
 .circleWrapper {
   width: 322px;
   height: 322px;
@@ -42,7 +23,6 @@
   position: relative;
   /* margin: 100px; */
 }
->>>>>>> v-2
 .circle {
   display: flex;
   position: absolute;
@@ -50,41 +30,6 @@
   left: 51%;
   width: 150px;
   height: 150px;
-<<<<<<< HEAD
-  margin: -51px;
-  border-radius: 51%;
-  text-align: center;
-}
-
-.deg0 {
-  transform: translate(201px);
-}
-
-.deg45 {
-  transform: rotate(46deg) translate(201px) rotate(-46deg);
-}
-
-.deg90 {
-  transform: rotate(91deg) translate(201px) rotate(-91deg);
-}
-
-.deg135 {
-  transform: rotate(136deg) translate(201px) rotate(-136deg);
-}
-
-.deg180 {
-  transform: rotate(181deg) translate(201px) rotate(-181deg);
-}
-
-.deg225 {
-  transform: rotate(226deg) translate(201px) rotate(-226deg);
-}
-
-.deg270 {
-  transform: rotate(271deg) translate(201px) rotate(-271deg);
-}
-
-=======
   margin: -75px;
   border-radius: 51%;
   text-align: center;
@@ -110,7 +55,6 @@
 .deg270 {
   transform: rotate(271deg) translate(201px) rotate(-271deg);
 }
->>>>>>> v-2
 .deg315 {
   transform: rotate(316deg) translate(201px) rotate(-316deg);
 }

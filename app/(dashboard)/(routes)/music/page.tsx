@@ -29,7 +29,7 @@ const MusicPage = () => {
     resolver: zodResolver(musicSchema),
   });
 
-  const { setIsOpen } = useContext(ProModalContext);
+  const { setOpen } = useContext(ProModalContext);
 
   const onSubmit = async (value: z.infer<typeof musicSchema>) => {
     try {
@@ -42,7 +42,7 @@ const MusicPage = () => {
     } catch (error: any) {
       toast.error("Something went wrong");
       if (error?.response?.status === 403) {
-        setIsOpen(true);
+        setOpen();
       }
     } finally {
       router.refresh();

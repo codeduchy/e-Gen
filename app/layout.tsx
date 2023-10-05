@@ -22,15 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <ProModalProvider>
-        <html lang="en">
-          <body className="relative">
-            <ToasterProvider />
-            <ProModal />
-            {children}
-          </body>
-        </html>
-      </ProModalProvider>
+      <html lang="en">
+        <body className="relative">
+          <ToasterProvider />
+          {children}
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

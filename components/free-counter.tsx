@@ -9,13 +9,13 @@ import { ProModalContext } from "@/context/pro-modal-provider";
 const FreeCounter = ({
   apiLimitCount = 0,
   className,
-  isPro,
+  isPro = false,
 }: {
   apiLimitCount: number | undefined;
   className?: string;
   isPro: boolean;
 }) => {
-  const { setIsOpen } = useContext(ProModalContext);
+  const { setOpen } = useContext(ProModalContext);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const FreeCounter = ({
         />
         <Button
           color="bg-gradient-to-r from-violet-700 to-red-500"
-          onClick={() => setIsOpen(true)}
+          onClick={setOpen}
         >
           Upgrade <BsLightningChargeFill className="ml-1 text-white" />
         </Button>

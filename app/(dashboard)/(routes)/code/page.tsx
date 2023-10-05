@@ -24,7 +24,7 @@ const CodePage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
 
-  const { setIsOpen } = useContext(ProModalContext);
+  const { setOpen } = useContext(ProModalContext);
 
   const {
     reset,
@@ -53,7 +53,7 @@ const CodePage = () => {
     } catch (error: any) {
       toast.error("Something went wrong");
       if (error?.response?.status === 403) {
-        setIsOpen(true);
+        setOpen();
       }
     } finally {
       router.refresh();

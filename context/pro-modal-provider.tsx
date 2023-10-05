@@ -1,26 +1,24 @@
 "use client";
-import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 
 type ProModalProps = {
   isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setOpen: () => void;
 };
 
 export const ProModalContext = createContext<ProModalProps>({
   isOpen: false,
-  setIsOpen: () => {},
+  setOpen: () => {},
 });
 const ProModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const setOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <ProModalContext.Provider value={{ isOpen, setIsOpen }}>
+    <ProModalContext.Provider value={{ isOpen, setOpen }}>
       {children}
     </ProModalContext.Provider>
   );

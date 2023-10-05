@@ -2,7 +2,7 @@ import { UserButton as User } from "@clerk/nextjs";
 
 const UserButton = () => {
   return (
-    <div className="z-20 absolute top-4 scale-125 right-8 hover:scale-[1.35] lg:scale-150 lg:hover:scale-[1.60]">
+    <div className="z-[500] absolute top-4 scale-[1.3] right-4 ">
       <User afterSignOutUrl="/" />
     </div>
   );

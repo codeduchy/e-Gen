@@ -31,7 +31,7 @@ const ImagePage = () => {
     resolver: zodResolver(imageSchema),
   });
 
-  const { setIsOpen } = useContext(ProModalContext);
+  const {} = useContext(ProModalContext);
 
   const onSubmit = async (values: z.infer<typeof imageSchema>) => {
     try {
@@ -46,7 +46,7 @@ const ImagePage = () => {
     } catch (error: any) {
       toast.error("Something went wrong");
       if (error?.response?.status === 403) {
-        setIsOpen(true);
+        true;
       }
     } finally {
       router.refresh();

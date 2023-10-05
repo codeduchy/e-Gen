@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 
 const ProModal = () => {
   const [loading, setLoading] = useState(false);
-  const { isOpen, setIsOpen } = useContext(ProModalContext);
+  const { isOpen, setOpen } = useContext(ProModalContext);
 
   const onSubscribe = async () => {
     try {
@@ -37,12 +37,12 @@ const ProModal = () => {
     >
       <div
         className="absolute h-full w-full bg-black/70"
-        onClick={() => setIsOpen(false)}
+        onClick={setOpen}
       ></div>
       <div className="relative z-10 bg-white w-[28rem] h-[32rem] rounded-lg flex flex-col p-5 justify-between items-center">
         <ImCross
           className="absolute top-2 transition-all right-2 text-red-700 hover:text-lg cursor-pointer"
-          onClick={() => setIsOpen(false)}
+          onClick={setOpen}
         />
         <h1 className="font-bold p-2 text-2xl">Upgrade to Pro</h1>
         <div className=" w-[90%] flex flex-col gap-2">

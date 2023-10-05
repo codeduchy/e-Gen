@@ -24,7 +24,7 @@ const ChatPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
 
-  const { setIsOpen } = useContext(ProModalContext);
+  const { setOpen } = useContext(ProModalContext);
 
   const {
     handleSubmit,
@@ -54,7 +54,7 @@ const ChatPage = () => {
     } catch (error: any) {
       toast.error("Something went wrong");
       if (error?.response?.status === 403) {
-        setIsOpen(true);
+        setOpen();
       }
     } finally {
       router.refresh();
