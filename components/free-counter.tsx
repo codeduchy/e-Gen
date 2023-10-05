@@ -20,7 +20,7 @@ const FreeCounter = ({
 
   useEffect(() => {
     setMounted(true);
-  });
+  }, []);
 
   if (!mounted) return null;
 

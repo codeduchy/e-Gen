@@ -29,12 +29,12 @@ const LandingNavbar = () => {
       </div>
       <div>
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-          <Button
-            className="w-fit rounded-full overflow-hidden"
-            color="bg-gradient-to-r from-violet-700 to-red-500 text-white"
+          <button
+            className="w-fit rounded-full overflow-hidden font-semibold bg-white py-2 px-3 text-lg hover:scale-[1.01]"
+            color="bg-white"
           >
             Get Started
-          </Button>
+          </button>
         </Link>
       </div>
     </nav>
