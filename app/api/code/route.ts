@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { formSchema } from "@/app/(dashboard)/(routes)/code/constants";
-=======
 import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
->>>>>>> v-2
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
@@ -25,31 +21,18 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { messages } = body;
 
-<<<<<<< HEAD
-    const notValid = formSchema.safeParse(messages);
-    if (notValid.success) {
-      return new NextResponse("Validation error", { status: 500 });
-    }
-=======
->>>>>>> v-2
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
     if (!openai.apiKey) {
-<<<<<<< HEAD
-      return new NextResponse("OpenAI API key not configured", { status: 500 });
-=======
       return new NextResponse("OpenAI API key not configured", {
         status: 500,
       });
->>>>>>> v-2
     }
     if (!messages) {
       return new NextResponse("Messages are required", { status: 400 });
     }
 
-<<<<<<< HEAD
-=======
     const freeTrial = await checkApiLimit();
     const isPro = await checkSubscription();
 
@@ -57,23 +40,16 @@ export async function POST(req: Request) {
       return new NextResponse("Free trial has expired", { status: 403 });
     }
 
->>>>>>> v-2
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [initMessage, ...messages],
     });
 
-<<<<<<< HEAD
-    return NextResponse.json(response.choices[0].message);
-  } catch (error) {
-    console.log("[CODE ERROR]: ", error);
-=======
     if (!isPro) await increaseApiLimit();
 
     return NextResponse.json(response.choices[0].message);
   } catch (error) {
     console.log("[CODE API ERROR]: ", error);
->>>>>>> v-2
     return new NextResponse("Internal error", { status: 500 });
   }
 }

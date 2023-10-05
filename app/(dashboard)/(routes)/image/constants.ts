@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import * as z from "zod";
-
-export const formSchema = z.object({
-  prompt: z.string().min(1, {
-    message: "Image prompt is required",
-=======
 import { z } from "zod";
 
 export const imageSchema = z.object({
   prompt: z.string().min(1, {
     message: "Prompt is required",
->>>>>>> v-2
   }),
   amount: z.string().min(1),
   resolution: z.string().min(1),

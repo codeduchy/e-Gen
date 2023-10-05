@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-const page = () => {
-  return <div>page</div>;
-};
-export default page;
-=======
 import Heading from "@/components/page/heading";
 import SubscriptionButton from "@/components/subscription-button";
 import { checkSubscription } from "@/lib/subscription";
@@ -32,4 +26,3 @@ const SettingsPage = async () => {
   );
 };
 export default SettingsPage;
->>>>>>> v-2

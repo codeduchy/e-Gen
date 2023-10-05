@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-const page = () => {
-  return <div>page</div>;
-};
-export default page;
-=======
 "use client";
 import Loader from "@/components/page/loader";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -89,4 +83,3 @@ const MusicPage = () => {
   );
 };
 export default MusicPage;
->>>>>>> v-2

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-const page = () => {
-  return <div>page</div>;
-};
-export default page;
-=======
 "use client";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
@@ -93,4 +87,3 @@ const VideoPage = () => {
   );
 };
 export default VideoPage;
->>>>>>> v-2
