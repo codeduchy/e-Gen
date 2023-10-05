@@ -5,7 +5,11 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+<<<<<<< HEAD
     "./utils/**/*.{js,ts,jsx,tsx,mdx}",
+=======
+    "./utils/routes.ts",
+>>>>>>> v-2
   ],
   theme: {
     extend: {

@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { formSchema } from "@/app/(dashboard)/(routes)/image/constants";
+=======
+import { imageSchema } from "@/app/(dashboard)/(routes)/image/constants";
+import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
+import { auth } from "@clerk/nextjs";
+import { NextResponse } from "next/server";
+import OpenAI from "openai";
+>>>>>>> v-2
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -16,11 +25,18 @@ export async function POST(req: Request) {
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
+<<<<<<< HEAD
+=======
+    if (!imageSchema.safeParse({ prompt, amount, resolution }).success) {
+      return new NextResponse("Unreliable prompt provided", { status: 400 });
+    }
+>>>>>>> v-2
     if (!openai.apiKey) {
       return new NextResponse("OpenAI API key not configured", {
         status: 500,
       });
     }
+<<<<<<< HEAD
     if (!amount) {
       return new NextResponse("Amount is required", { status: 400 });
     }
@@ -29,6 +45,18 @@ export async function POST(req: Request) {
     }
     if (!resolution) {
       return new NextResponse("Resolution is required", { status: 400 });
+=======
+    if (!amount || !prompt || !resolution) {
+      return new NextResponse("Full prompt is required", { status: 400 });
+    }
+
+    const isPro = await checkSubscription();
+
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial && !isPro) {
+      return new NextResponse("Free trial has expired", { status: 403 });
+>>>>>>> v-2
     }
 
     const response = await openai.images.generate({
@@ -37,9 +65,17 @@ export async function POST(req: Request) {
       size: resolution,
     });
 
+<<<<<<< HEAD
     return NextResponse.json(response.data);
   } catch (error) {
     console.log("[IMAGE ERROR]: ", error);
+=======
+    if (!isPro) await increaseApiLimit();
+
+    return NextResponse.json(response.data);
+  } catch (error) {
+    console.log("[IMAGE API ERROR]: ", error);
+>>>>>>> v-2
     return new NextResponse("Internal error", { status: 500 });
   }
 }
