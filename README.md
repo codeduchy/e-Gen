@@ -18,12 +18,6 @@ npx prisma db push
 npx prisma studio (development database)
 ```
 
-Seed database
-
-```
-node scripts/seed.ts
-```
-
 Stripe CLI required for payment functionality in dev mode
 
 ```
@@ -45,7 +39,7 @@ OPENAI_API_KEY=
 
 REPLICATE_API_TOKEN=
 
-DATABASE_URL=mysql
+DATABASE_URL=
 
 STRIPE_API_KEY=
 STRIPE_WEBHOOK_SECRET=
@@ -56,3 +50,5 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 npm run dev
 ```
+
+For inspiration and tutoring, thank's goes to: @codewithantonio
