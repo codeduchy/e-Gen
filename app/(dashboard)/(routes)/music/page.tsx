@@ -64,10 +64,12 @@ const MusicPage = () => {
           placeholder="Drum solo"
         />
         <Button
-          disabled={isSubmitting}
-          className=" col-span-full lg:col-span-3"
+          disabled={true}
+          hover={false}
+          color="bg-red-600 text-white"
+          className="col-span-full lg:col-span-3 "
         >
-          Submit
+          Disabled, api down!
         </Button>
       </Form>
       <div>

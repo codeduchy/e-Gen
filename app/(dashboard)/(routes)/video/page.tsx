@@ -64,11 +64,13 @@ const VideoPage = () => {
           register={{ ...register("prompt") }}
         />
         <Button
-          disabled={isSubmitting}
+          disabled={true}
+          hover={false}
+          color="bg-red-600 text-white"
           className="col-span-full lg:col-span-3"
-          color="bg-gradient-to-r from-orange-700 to-cyan-500 text-white"
+          // color="bg-gradient-to-r from-orange-700 to-cyan-500 text-white"
         >
-          Submit
+          Disabled, api down!
         </Button>
       </Form>
       <div>
