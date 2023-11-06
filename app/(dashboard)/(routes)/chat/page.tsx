@@ -16,7 +16,6 @@ import { useContext, useState } from "react";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Progress from "@/components/progress";
 import { ProModalContext } from "@/context/pro-modal-provider";
 import toast from "react-hot-toast";
 
